@@ -7,9 +7,9 @@ import android.text.TextUtils;
  */
 public class ValidateUtils
 {
-    public static boolean isEmpty(String... args)
+    public static boolean isEmpty(CharSequence... args)
     {
-        for (String arg : args)
+        for (CharSequence arg : args)
         {
             if (TextUtils.isEmpty(arg))
             {

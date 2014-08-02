@@ -47,12 +47,12 @@ public class ViewUtils
         return find;
     }
 
-    public static View vuSetOnClickListener(Activity activity, View.OnClickListener listener, int id, int... ids)
+    public static <T extends View> T  vuSetOnClickListener(Activity activity, View.OnClickListener listener, int id, int... ids)
     {
         View find = vuFind(activity, id, ids);
         find.setOnClickListener(listener);
 
-        return find;
+        return (T) find;
     }
 
     public static <T extends View> T vuSetOnClickListener(View view, View.OnClickListener listener, int... ids)

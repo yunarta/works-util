@@ -17,7 +17,7 @@ public class IOUtils
         close(out);
     }
 
-    private static void close(Closeable closeable)
+    public static void close(Closeable closeable)
     {
         try
         {

@@ -1,15 +1,31 @@
 package com.mobilesolutionworks.android.util;
 
+import android.net.Uri;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
  * Created by yunarta on 22/1/14.
- *
  */
 public class TypeUtils
 {
-    public static String json(String ... args) {
+    public static Uri buildUri(Uri base, String... args)
+    {
+        Uri.Builder builder = base.buildUpon();
+        for (String arg : args)
+        {
+            builder.appendPath(arg);
+        }
+        return builder.build();
+    }
+
+    public static <T> T[] array(T... args)
+    {
+        return args;
+    }
+
+    public static String json(String... args)
+    {
         JSONObject object = new JSONObject();
         for (int i = 0; i < args.length / 2; i++)
         {
