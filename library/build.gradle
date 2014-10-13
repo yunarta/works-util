@@ -6,7 +6,7 @@ repositories {
 }
 
 group 'com.mobilesolutionworks'
-version '1.0.3'
+version '1.0.4'
 
 android {
     compileSdkVersion 19
@@ -23,8 +23,8 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion androidTargetSdkVersion
-        versionCode 1
-        versionName "1.0.3"
+        versionCode 4
+        versionName "1.0.4"
     }
 
     buildTypes {

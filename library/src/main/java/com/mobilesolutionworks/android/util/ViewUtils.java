@@ -27,6 +27,7 @@ import android.widget.TextView;
  * Created by Yunarta on 3/7/14.
  */
 public class ViewUtils {
+
     public static <T extends View> T vuFind(Activity activity, int id, int... ids) {
         View view = activity.findViewById(id);
         if (ids != null) {
@@ -50,11 +51,11 @@ public class ViewUtils {
         return (T) v;
     }
 
-    public static View vuSetTag(View view, int id, Object data, int... ids) {
+    public static <T extends View> T vuSetTag(View view, int id, Object data, int... ids) {
         View find = vuFind(view, ids);
         find.setTag(id, data);
 
-        return find;
+        return (T) find;
     }
 
     public static <T extends View> T vuSetOnClickListener(Activity activity, View.OnClickListener listener, int id, int... ids) {
@@ -113,41 +114,49 @@ public class ViewUtils {
         return (T) find;
     }
 
-    public static void vuSetTextColor(Activity activity, int color, int id, int... ids) {
+    public static <T extends TextView> T vuSetTextColor(Activity activity, int color, int id, int... ids) {
         TextView textView = vuFind(activity, id, ids);
         textView.setTextColor(color);
+
+        return (T) textView;
     }
 
-    public static void vuSetTextColor(View view, int color, int... ids) {
+    public static <T extends TextView> T vuSetTextColor(View view, int color, int... ids) {
         TextView textView = vuFind(view, ids);
         textView.setTextColor(color);
+
+        return (T) textView;
     }
 
-    public static TextView vuSetText(Activity activity, String text, int id, int... ids) {
+    public static <T extends TextView> T vuSetText(Activity activity, String text, int id, int... ids) {
         TextView textView = vuFind(activity, id, ids);
         textView.setText(text);
 
-        return textView;
+        return (T) textView;
     }
 
-    public static TextView vuSetText(View view, String text, int... ids) {
+    public static <T extends TextView> T vuSetText(View view, String text, int... ids) {
         if (text == null) {
             text = "";
         }
         TextView textView = vuFind(view, ids);
         textView.setText(text);
 
-        return textView;
+        return (T) textView;
     }
 
-    public static void vuSetEnabled(Activity activity, boolean enabled, int id, int... ids) {
+    public static <T extends View> T vuSetEnabled(Activity activity, boolean enabled, int id, int... ids) {
         View find = vuFind(activity, id, ids);
         find.setEnabled(enabled);
+
+        return (T) find;
     }
 
-    public static void vuSetEnabled(View view, boolean enabled, int... ids) {
+    public static <T extends View> T vuSetEnabled(View view, boolean enabled, int... ids) {
         View find = vuFind(view, ids);
         find.setEnabled(enabled);
+
+        return (T) find;
     }
 
     public static CharSequence vuGetText(Activity activity, int id, int... ids) {
