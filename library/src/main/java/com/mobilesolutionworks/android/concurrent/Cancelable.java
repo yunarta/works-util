@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.mobilesolutionworks.concurrent;
+package com.mobilesolutionworks.android.concurrent;
 
 /**
  * Created by yunarta on 13/9/14.
