@@ -78,15 +78,6 @@ public class ViewUtils {
         }
     }
 
-
-    @Deprecated
-    public static <T extends View> T vuSetOnClickListener(Activity activity, View.OnClickListener listener, int id, int... ids) {
-        View find = vuFind(activity, id, ids);
-        find.setOnClickListener(listener);
-
-        return (T) find;
-    }
-
     public static <T extends View> void vuSetOnClickListener(View view, View.OnClickListener listener, int... ids) {
         for(int id : ids) {
             View find = vuFind(view, id);
@@ -99,14 +90,6 @@ public class ViewUtils {
             View find = vuFind(activity, id);
             find.setOnClickListener(listener);
         }
-    }
-
-    @Deprecated
-    public static <T extends View> T vuSetBackgroundResource(Activity activity, int background, int id, int... ids) {
-        View find = vuFind(activity, id, ids);
-        find.setBackgroundResource(background);
-
-        return (T) find;
     }
 
     public static <T extends View> void vuSetBackgroundResource(Activity activity, int background, int... ids) {
@@ -123,14 +106,6 @@ public class ViewUtils {
         }
     }
 
-    @Deprecated
-    public static <T extends View> T vuSetVisibility(Activity activity, int visibility, int id, int... ids) {
-        View find = vuFind(activity, id, ids);
-        find.setVisibility(visibility);
-
-        return (T) find;
-    }
-
     public static <T extends View> void vuSetVisibility(Activity activity, int visibility, int... ids) {
         for(int id : ids) {
             View find = vuFind(activity, id);
@@ -143,14 +118,6 @@ public class ViewUtils {
             View find = vuFind(view, id);
             find.setVisibility(visibility);
         }
-    }
-
-    @Deprecated
-    public static <T extends View> T vuSetImageResource(Activity activity, int drawable, int id, int... ids) {
-        ImageView find = vuFind(activity, id, ids);
-        find.setImageResource(drawable);
-
-        return (T) find;
     }
 
     public static <T extends View> void vuSetImageResource(Activity activity, int drawable, int... ids) {
@@ -167,14 +134,6 @@ public class ViewUtils {
         }
     }
 
-    @Deprecated
-    public static <T extends TextView> T vuSetTextColor(Activity activity, int color, int id, int... ids) {
-        TextView textView = vuFind(activity, id, ids);
-        textView.setTextColor(color);
-
-        return (T) textView;
-    }
-
     public static <T extends TextView> void vuSetTextColor(Activity activity, int color, int... ids) {
         for(int id : ids) {
             TextView textView = vuFind(activity, id);
@@ -188,14 +147,6 @@ public class ViewUtils {
             TextView textView = vuFind(view, id);
             textView.setTextColor(color);
         }
-    }
-
-    @Deprecated
-    public static <T extends TextView> T vuSetText(Activity activity, String text, int id, int... ids) {
-        TextView textView = vuFind(activity, id, ids);
-        textView.setText(text);
-
-        return (T) textView;
     }
 
     public static <T extends TextView> void vuSetText(Activity activity, String text,  int... ids) {
@@ -216,14 +167,6 @@ public class ViewUtils {
         }
     }
 
-    @Deprecated
-    public static <T extends View> T vuSetEnabled(Activity activity, boolean enabled, int id, int... ids) {
-        View find = vuFind(activity, id, ids);
-        find.setEnabled(enabled);
-
-        return (T) find;
-    }
-
     public static <T extends View> void vuSetEnabled(Activity activity, boolean enabled, int... ids) {
         for(int id : ids) {
             View find = vuFind(activity, id);
@@ -236,12 +179,6 @@ public class ViewUtils {
             View find = vuFind(view, id);
             find.setEnabled(enabled);
         }
-    }
-
-    @Deprecated
-    public static CharSequence vuGetText(Activity activity, int id, int... ids) {
-        TextView textView = vuFind(activity, id, ids);
-        return textView.getText();
     }
 
     public static CharSequence vuGetText(Activity activity, int id) {
