@@ -26,8 +26,10 @@ import android.widget.TextView;
  * <p/>
  * Created by Yunarta on 3/7/14.
  */
+@SuppressWarnings({"unchecked", "unused"})
 public class ViewUtils {
 
+    @Deprecated
     public static <T extends View> T vuFind(Activity activity, int id, int... ids) {
         View view = activity.findViewById(id);
         if (ids != null) {
@@ -37,13 +39,18 @@ public class ViewUtils {
         return (T) view;
     }
 
+    public static <T extends View> T vuFind(Activity activity, int id) {
+        return (T) activity.findViewById(id);
+    }
+
+    @Deprecated
     public static <T extends View> T vuFind(View view, int... ids) {
         View v = view;
         if (v != null) {
             for (int id : ids) {
-                v = v.findViewById(id);
+                v = view.findViewById(id);
                 if (v == null) {
-                    return null;
+                    v = view.getRootView().findViewById(id);
                 }
             }
         }
@@ -51,121 +58,137 @@ public class ViewUtils {
         return (T) v;
     }
 
-    public static <T extends View> T vuSetTag(View view, int id, Object data, int... ids) {
-        View find = vuFind(view, ids);
-        find.setTag(id, data);
+    public static <T extends View> T vuFind(View view, int id) {
+        View v = view;
+        if (v != null) {
+            v = view.findViewById(id);
+            if (v == null) {
+                v = view.getRootView().findViewById(id);
+            }
 
-        return (T) find;
+        }
+        return (T) v;
     }
 
-    public static <T extends View> T vuSetOnClickListener(Activity activity, View.OnClickListener listener, int id, int... ids) {
-        View find = vuFind(activity, id, ids);
-        find.setOnClickListener(listener);
 
-        return (T) find;
+    public static <T extends View> void vuSetTag(View view, int key, Object data, int... ids) {
+        for(int id : ids) {
+            View find = vuFind(view, id);
+            find.setTag(key, data);
+        }
     }
 
-    public static <T extends View> T vuSetOnClickListener(View view, View.OnClickListener listener, int... ids) {
-        View find = vuFind(view, ids);
-        find.setOnClickListener(listener);
-
-        return (T) find;
+    public static <T extends View> void vuSetOnClickListener(View view, View.OnClickListener listener, int... ids) {
+        for(int id : ids) {
+            View find = vuFind(view, id);
+            find.setOnClickListener(listener);
+        }
     }
 
-    public static <T extends View> T vuSetBackgroundResource(Activity activity, int background, int id, int... ids) {
-        View find = vuFind(activity, id, ids);
-        find.setBackgroundResource(background);
-
-        return (T) find;
+    public static <T extends View> void vuSetOnClickListener(Activity activity, View.OnClickListener listener, int... ids) {
+        for(int id : ids) {
+            View find = vuFind(activity, id);
+            find.setOnClickListener(listener);
+        }
     }
 
-    public static <T extends View> T vuSetBackgroundResource(View view, int background, int... ids) {
-        View find = vuFind(view, ids);
-        find.setBackgroundResource(background);
-
-        return (T) find;
+    public static <T extends View> void vuSetBackgroundResource(Activity activity, int background, int... ids) {
+        for(int id : ids) {
+            View find = vuFind(activity, id);
+            find.setBackgroundResource(background);
+        }
     }
 
-    public static <T extends View> T vuSetVisibility(Activity activity, int visibility, int id, int... ids) {
-        View find = vuFind(activity, id, ids);
-        find.setVisibility(visibility);
-
-        return (T) find;
+    public static <T extends View> void vuSetBackgroundResource(View view, int background, int... ids) {
+        for(int id : ids) {
+            View find = vuFind(view, id);
+            find.setBackgroundResource(background);
+        }
     }
 
-    public static <T extends View> T vuSetVisibility(View view, int visibility, int... ids) {
-        View find = vuFind(view, ids);
-        find.setVisibility(visibility);
-
-        return (T) find;
+    public static <T extends View> void vuSetVisibility(Activity activity, int visibility, int... ids) {
+        for(int id : ids) {
+            View find = vuFind(activity, id);
+            find.setVisibility(visibility);
+        }
     }
 
-    public static <T extends View> T vuSetImageResource(Activity activity, int drawable, int id, int... ids) {
-        ImageView find = vuFind(activity, id, ids);
-        find.setImageResource(drawable);
-
-        return (T) find;
+    public static <T extends View> void vuSetVisibility(View view, int visibility, int... ids) {
+        for(int id : ids) {
+            View find = vuFind(view, id);
+            find.setVisibility(visibility);
+        }
     }
 
-    public static <T extends View> T vuSetImageResource(View view, int drawable, int... ids) {
-        ImageView find = vuFind(view, ids);
-        find.setImageResource(drawable);
-
-        return (T) find;
+    public static <T extends View> void vuSetImageResource(Activity activity, int drawable, int... ids) {
+        for(int id : ids) {
+            ImageView find = vuFind(activity, id);
+            find.setImageResource(drawable);
+        }
     }
 
-    public static <T extends TextView> T vuSetTextColor(Activity activity, int color, int id, int... ids) {
-        TextView textView = vuFind(activity, id, ids);
-        textView.setTextColor(color);
-
-        return (T) textView;
+    public static <T extends View> void vuSetImageResource(View view, int drawable, int... ids) {
+        for(int id : ids) {
+            ImageView find = vuFind(view, id);
+            find.setImageResource(drawable);
+        }
     }
 
-    public static <T extends TextView> T vuSetTextColor(View view, int color, int... ids) {
-        TextView textView = vuFind(view, ids);
-        textView.setTextColor(color);
-
-        return (T) textView;
+    public static <T extends TextView> void vuSetTextColor(Activity activity, int color, int... ids) {
+        for(int id : ids) {
+            TextView textView = vuFind(activity, id);
+            textView.setTextColor(color);
+        }
     }
 
-    public static <T extends TextView> T vuSetText(Activity activity, String text, int id, int... ids) {
-        TextView textView = vuFind(activity, id, ids);
-        textView.setText(text);
 
-        return (T) textView;
+    public static <T extends TextView> void vuSetTextColor(View view, int color, int... ids) {
+        for(int id : ids) {
+            TextView textView = vuFind(view, id);
+            textView.setTextColor(color);
+        }
     }
 
-    public static <T extends TextView> T vuSetText(View view, String text, int... ids) {
+    public static <T extends TextView> void vuSetText(Activity activity, String text,  int... ids) {
+        for(int id : ids) {
+            TextView textView = vuFind(activity, id);
+            textView.setText(text);
+        }
+    }
+
+
+    public static <T extends TextView> void vuSetText(View view, String text, int... ids) {
         if (text == null) {
             text = "";
         }
-        TextView textView = vuFind(view, ids);
-        textView.setText(text);
-
-        return (T) textView;
+        for(int id : ids) {
+            TextView textView = vuFind(view, id);
+            textView.setText(text);
+        }
     }
 
-    public static <T extends View> T vuSetEnabled(Activity activity, boolean enabled, int id, int... ids) {
-        View find = vuFind(activity, id, ids);
-        find.setEnabled(enabled);
-
-        return (T) find;
+    public static <T extends View> void vuSetEnabled(Activity activity, boolean enabled, int... ids) {
+        for(int id : ids) {
+            View find = vuFind(activity, id);
+            find.setEnabled(enabled);
+        }
     }
 
-    public static <T extends View> T vuSetEnabled(View view, boolean enabled, int... ids) {
-        View find = vuFind(view, ids);
-        find.setEnabled(enabled);
-
-        return (T) find;
+    public static <T extends View> void vuSetEnabled(View view, boolean enabled, int... ids) {
+        for(int id : ids) {
+            View find = vuFind(view, id);
+            find.setEnabled(enabled);
+        }
     }
 
-    public static CharSequence vuGetText(Activity activity, int id, int... ids) {
-        TextView textView = vuFind(activity, id, ids);
+    public static CharSequence vuGetText(Activity activity, int id) {
+        TextView textView = vuFind(activity, id);
         return textView.getText();
     }
 
-    public static CharSequence vuGetText(View view, int... ids) {
-        TextView textView = vuFind(view, ids);
+    public static CharSequence vuGetText(View view, int id) {
+        TextView textView = vuFind(view, id);
         return textView.getText();
     }
+
 }
