@@ -191,4 +191,14 @@ public class ViewUtils {
         return textView.getText();
     }
 
+    public static <T extends TextView> T vuAppendText(View view, String text, int id) {
+
+        String current = vuGetText(view, id).toString();
+
+        TextView textView = vuFind(view, id);
+        textView.setText(current + text);
+
+        return (T) textView;
+    }
+
 }
