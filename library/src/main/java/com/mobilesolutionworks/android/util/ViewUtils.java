@@ -17,6 +17,7 @@
 package com.mobilesolutionworks.android.util;
 
 import android.app.Activity;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -197,6 +198,13 @@ public class ViewUtils {
 
         TextView textView = vuFind(view, id);
         textView.setText(current + text);
+
+        return (T) textView;
+    }
+
+    public static <T extends TextView> T vuSetText(View view, Spanned text, int ids) {
+        TextView textView = vuFind(view, ids);
+        textView.setText(text);
 
         return (T) textView;
     }
